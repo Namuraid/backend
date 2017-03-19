@@ -3,10 +3,13 @@ services:
   db:
     image: postgres
   web:
-    build: .
+    build:
+        context: .
+        dockerfile: Dockerfile
     command: mix phoenix.server
     volumes:
       - .:/app
+      - /app/deps
     ports:
       - "4000:4000"
     depends_on:

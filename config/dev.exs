@@ -37,6 +37,6 @@ config :namuraid, Namuraid.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "namuraid_dev",
+  database: "postgres",
   hostname: "db",
   pool_size: 10

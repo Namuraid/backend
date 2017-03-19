@@ -11,4 +11,7 @@ RUN mkdir -p $APP_HOME
 
 workdir $APP_HOME
 
+add mix.exs $APP_HOME
+run mix deps.get
+
 add . $APP_HOME

@@ -2,7 +2,7 @@ defmodule Namuraid.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Namuraid.RoomChannel
+  channel "*", Namuraid.ScreenChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

@@ -1,0 +1,38 @@
+<h2>Listing screens</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Activescreen</th>
+      <th>Width</th>
+      <th>Height</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Bgcolor</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for screen <- @screens do %>
+    <tr>
+      <td><%= screen.name %></td>
+      <td><%= screen.activeScreen %></td>
+      <td><%= screen.width %></td>
+      <td><%= screen.height %></td>
+      <td><%= screen.x %></td>
+      <td><%= screen.y %></td>
+      <td><%= screen.bgColor %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: screen_path(@conn, :show, screen), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: screen_path(@conn, :edit, screen), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: screen_path(@conn, :delete, screen), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New screen", to: screen_path(@conn, :new) %>

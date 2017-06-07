@@ -1,0 +1,43 @@
+<h2>Show screen</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @screen.name %>
+  </li>
+
+  <li>
+    <strong>Activescreen:</strong>
+    <%= @screen.activeScreen %>
+  </li>
+
+  <li>
+    <strong>Width:</strong>
+    <%= @screen.width %>
+  </li>
+
+  <li>
+    <strong>Height:</strong>
+    <%= @screen.height %>
+  </li>
+
+  <li>
+    <strong>X:</strong>
+    <%= @screen.x %>
+  </li>
+
+  <li>
+    <strong>Y:</strong>
+    <%= @screen.y %>
+  </li>
+
+  <li>
+    <strong>Bgcolor:</strong>
+    <%= @screen.bgColor %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: screen_path(@conn, :edit, @screen) %>
+<%= link "Back", to: screen_path(@conn, :index) %>

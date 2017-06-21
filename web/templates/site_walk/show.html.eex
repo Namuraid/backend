@@ -1,0 +1,28 @@
+<h2>Show site walk</h2>
+
+<ul>
+
+  <li>
+    <strong>X:</strong>
+    <%= @site_walk.x %>
+  </li>
+
+  <li>
+    <strong>Y:</strong>
+    <%= @site_walk.y %>
+  </li>
+
+  <li>
+    <strong>W:</strong>
+    <%= @site_walk.w %>
+  </li>
+
+  <li>
+    <strong>H:</strong>
+    <%= @site_walk.h %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: site_walk_path(@conn, :edit, @site_walk) %>
+<%= link "Back", to: site_walk_path(@conn, :index) %>

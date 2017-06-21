@@ -1,0 +1,6 @@
+<h2>Edit site walk</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: site_walk_path(@conn, :update, @site_walk) %>
+
+<%= link "Back", to: site_walk_path(@conn, :index) %>

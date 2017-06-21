@@ -1,0 +1,32 @@
+<h2>Listing sitewalk</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>X</th>
+      <th>Y</th>
+      <th>W</th>
+      <th>H</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for site_walk <- @sitewalk do %>
+    <tr>
+      <td><%= site_walk.x %></td>
+      <td><%= site_walk.y %></td>
+      <td><%= site_walk.w %></td>
+      <td><%= site_walk.h %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: site_walk_path(@conn, :show, site_walk), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: site_walk_path(@conn, :edit, site_walk), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: site_walk_path(@conn, :delete, site_walk), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New site walk", to: site_walk_path(@conn, :new) %>

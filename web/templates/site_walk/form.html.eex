@@ -6,27 +6,15 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :x, class: "control-label" %>
-    <%= number_input f, :x, class: "form-control" %>
-    <%= error_tag f, :x %>
+    <%= label f, :style, class: "control-label" %>
+    <%= text_input f, :style, class: "form-control" %>
+    <%= error_tag f, :style %>
   </div>
 
   <div class="form-group">
-    <%= label f, :y, class: "control-label" %>
-    <%= number_input f, :y, class: "form-control" %>
-    <%= error_tag f, :y %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :w, class: "control-label" %>
-    <%= number_input f, :w, class: "form-control" %>
-    <%= error_tag f, :w %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :h, class: "control-label" %>
-    <%= number_input f, :h, class: "form-control" %>
-    <%= error_tag f, :h %>
+    <%= label f, :legend, class: "control-label" %>
+    <%= text_input f, :legend, class: "form-control" %>
+    <%= error_tag f, :legend %>
   </div>
 
   <div class="form-group">

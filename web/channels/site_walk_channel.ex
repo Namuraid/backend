@@ -6,13 +6,18 @@ defmodule Namuraid.SiteWalkChannel do
   end
 
   def update_panValues(values) do
-    panV = Enum.map(values, fn(record) -> %{
-      "width.px" => record.w,
-      "height.px" => record.h,
-      "margin.left.px" => record.x,
-      "margin.top.px" => record.y,
-    } end)
-    Namuraid.Endpoint.broadcast("sitewalk", "panValues",
-                                %{"panvalues" => panV})
+    Namuraid.Endpoint.broadcast("sitewalk", "panValues", as_pan_values(values))
+  end
+
+  def handle_in("refresh", _payload, socket) do
+    push socket, "panValues", as_pan_values(Namuraid.Repo.all_panValues())
+    {:noreply, socket}
+  end
+
+  defp as_pan_values(values) do
+    %{"panValues" => Enum.map(values, fn(record) -> %{
+      "style" => record.style,
+      "legend" => record.legend,
+    } end)}
   end
 end

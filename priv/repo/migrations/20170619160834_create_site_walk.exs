@@ -3,10 +3,8 @@ defmodule Namuraid.Repo.Migrations.CreateSiteWalk do
 
   def change do
     create table(:sitewalk) do
-      add :x, :integer
-      add :y, :integer
-      add :w, :integer
-      add :h, :integer
+      add :legend, :string
+      add :style, :string
 
       timestamps()
     end

@@ -2,10 +2,8 @@ defmodule Namuraid.SiteWalk do
   use Namuraid.Web, :model
 
   schema "sitewalk" do
-    field :x, :integer
-    field :y, :integer
-    field :w, :integer
-    field :h, :integer
+    field :style, :string
+    field :legend, :string
 
     timestamps()
   end
@@ -15,7 +13,7 @@ defmodule Namuraid.SiteWalk do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:x, :y, :w, :h])
-    |> validate_required([:x, :y, :w, :h])
+    |> cast(params, [:style, :legend])
+    |> validate_required([:style, :legend])
   end
 end

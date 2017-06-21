@@ -4,20 +4,14 @@
   <thead>
     <tr>
       <th>X</th>
-      <th>Y</th>
-      <th>W</th>
-      <th>H</th>
-
-      <th></th>
+      <th>Style</th>
     </tr>
   </thead>
   <tbody>
 <%= for site_walk <- @sitewalk do %>
     <tr>
-      <td><%= site_walk.x %></td>
-      <td><%= site_walk.y %></td>
-      <td><%= site_walk.w %></td>
-      <td><%= site_walk.h %></td>
+      <td><%= site_walk.legend %></td>
+      <td><%= site_walk.style %></td>
 
       <td class="text-right">
         <%= link "Show", to: site_walk_path(@conn, :show, site_walk), class: "btn btn-default btn-xs" %>

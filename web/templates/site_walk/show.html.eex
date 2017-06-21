@@ -3,23 +3,13 @@
 <ul>
 
   <li>
-    <strong>X:</strong>
-    <%= @site_walk.x %>
+    <strong>Legend:</strong>
+    <%= @site_walk.legend %>
   </li>
 
   <li>
-    <strong>Y:</strong>
-    <%= @site_walk.y %>
-  </li>
-
-  <li>
-    <strong>W:</strong>
-    <%= @site_walk.w %>
-  </li>
-
-  <li>
-    <strong>H:</strong>
-    <%= @site_walk.h %>
+    <strong>Style:</strong>
+    <%= @site_walk.style %>
   </li>
 
 </ul>

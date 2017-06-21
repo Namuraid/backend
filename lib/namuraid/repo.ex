@@ -10,7 +10,7 @@ defmodule Namuraid.Repo do
 
   def all_panValues() do
     query = from Namuraid.SiteWalk,
-      select: [:x, :y, :w, :h]
+      select: [:style, :legend]
     Namuraid.Repo.all(query)
   end
 end

@@ -43,11 +43,11 @@ defmodule Namuraid.ScreenController do
   def update(conn, %{"id" => id, "screen" => screen_params}) do
     screen = Repo.get!(Screen, id)
     changeset = Screen.changeset(screen, screen_params)
-    Logger.info "changeset is: #{inspect(changeset)}"
     case Repo.update(changeset) do
       {:ok, screen} ->
         Namuraid.ScreenChannel.update_dimension(screen)
         if get_change(changeset, :activeScreen) do
+          Logger.info("active screen has changed!")
           Namuraid.ScreenChannel.update_activeScreen(screen)
         end
         if get_change(changeset, :name) do

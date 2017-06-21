@@ -3,6 +3,7 @@ defmodule Namuraid.UserSocket do
 
   ## Channels
   channel "screen:*", Namuraid.ScreenChannel
+  channel "sitewalk", Namuraid.SiteWalkChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

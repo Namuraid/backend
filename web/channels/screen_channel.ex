@@ -1,5 +1,6 @@
 defmodule Namuraid.ScreenChannel do
   use Phoenix.Channel
+  require Logger
 
   def join("screen:all", _params, socket) do
     {:ok, %{"screens" => Namuraid.Repo.all_screens()}, socket}
@@ -24,7 +25,8 @@ defmodule Namuraid.ScreenChannel do
   end
 
   def update_activeScreen(screen) do
-    Namuraid.Endpoint.broadcast("screen:#{screen.name}", "activeScreen", %{
+    Logger.info("Broadcasting active screen change")
+    Namuraid.Endpoint.broadcast("screen:#{screen.name}", "activescreen", %{
       "activeScreen" => screen.activeScreen})
   end
 

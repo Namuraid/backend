@@ -7,4 +7,10 @@ defmodule Namuraid.Repo do
       select: s.name
     Namuraid.Repo.all(query)
   end
+
+  def all_panValues() do
+    query = from Namuraid.SiteWalk,
+      select: [:x, :y, :w, :h]
+    Namuraid.Repo.all(query)
+  end
 end

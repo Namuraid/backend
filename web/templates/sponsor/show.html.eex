@@ -1,0 +1,13 @@
+<h2>Show sponsor</h2>
+
+<ul>
+
+  <li>
+    <strong>Logo:</strong>
+    <%= @sponsor.logo %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: sponsor_path(@conn, :edit, @sponsor) %>
+<%= link "Back", to: sponsor_path(@conn, :index) %>

@@ -19,6 +19,7 @@ defmodule Namuraid.Router do
     get "/", PageController, :index
     resources "/screens", ScreenController
     resources "/sitewalk", SiteWalkController
+    resources "/sponsors", SponsorController
   end
 
   # Other scopes may use custom stacks.

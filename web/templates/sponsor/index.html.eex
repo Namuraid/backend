@@ -1,0 +1,26 @@
+<h2>Listing sponsor</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Logo</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for sponsor <- @sponsor do %>
+    <tr>
+      <td><%= sponsor.logo %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: sponsor_path(@conn, :show, sponsor), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: sponsor_path(@conn, :edit, sponsor), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: sponsor_path(@conn, :delete, sponsor), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New sponsor", to: sponsor_path(@conn, :new) %>

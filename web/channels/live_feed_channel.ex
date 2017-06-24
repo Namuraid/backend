@@ -1,7 +1,11 @@
 defmodule Namuraid.LiveFeedChannel do
   use Phoenix.Channel
 
-  def join("sitewalk", _params, socket) do
-    {:ok, %{"token" => "images/plan_2017.jpg"}, socket}
+  def join("livefeed", _params, socket) do
+    # TODO put token an pageid in the db
+    {:ok, %{
+      "token" => "",
+      "pageId" => ""
+    }, socket}
   end
 end

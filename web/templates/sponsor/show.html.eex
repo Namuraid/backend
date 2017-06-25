@@ -3,11 +3,24 @@
 <ul>
 
   <li>
-    <strong>Logo:</strong>
-    <%= @sponsor.logo %>
+    <div>
+      <strong>Logo:</strong>
+      <%= @sponsor.logo %>
+    </div>
+    <div>
+      <strong>Orientation:</strong>
+      <%= @sponsor.orientation %>
+    </div>
+    <div>
+      <strong>Background:</strong>
+      <%= @sponsor.background %>
+    </div>
+    <div>
+      <img src="<%= static_path(@conn, @sponsor.logo) %>"/>
+    </div>
   </li>
 
 </ul>
 
-<%= link "Edit", to: sponsor_path(@conn, :edit, @sponsor) %>
-<%= link "Back", to: sponsor_path(@conn, :index) %>
+<%= link "Edit", to: sponsor_path(@conn, :edit, @sponsor), class: "btn btn-default" %>
+<%= link "Back", to: sponsor_path(@conn, :index), class: "btn btn-default"  %>

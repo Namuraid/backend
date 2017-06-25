@@ -5,6 +5,9 @@ defmodule Namuraid.UserSocket do
   channel "screen:*", Namuraid.ScreenChannel
   channel "sitewalk", Namuraid.SiteWalkChannel
   channel "livefeed", Namuraid.LiveFeedChannel
+  channel "sponsors", Namuraid.SponsorsChannel
+  channel "start", Namuraid.StartChannel
+  channel "result", Namuraid.ResultChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

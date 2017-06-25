@@ -17,6 +17,16 @@ defmodule Namuraid.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
+    get "/live", LiveController, :index
+    post "/live", LiveController, :create
+
+    get "/start", StartController, :index
+    post "/start", StartController, :create
+
+    get "/result", ResultController, :index
+    post "/result", ResultController, :create
+
     resources "/screens", ScreenController
     resources "/sitewalk", SiteWalkController
     resources "/sponsors", SponsorController

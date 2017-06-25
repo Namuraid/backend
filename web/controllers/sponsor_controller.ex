@@ -1,11 +1,35 @@
 defmodule Namuraid.SponsorController do
   use Namuraid.Web, :controller
+  require Logger
 
   alias Namuraid.Sponsor
 
-  def index(conn, _params) do
+
+  def index(conn, %{"seed" => "true"} = params) do
+    seed_sponsors()
+    _def_index(conn, params)
+  end
+
+  def index(conn, %{"clear" => "true"} = params) do
+    Repo.delete_all(Sponsor)
+    _def_index(conn, params)
+  end
+
+  def index(conn, params) do
+    _def_index(conn, params)
+  end
+
+  defp _def_index(conn, _params) do
     sponsor = Repo.all(Sponsor)
     render(conn, "index.html", sponsor: sponsor)
+  end
+
+  defp seed_sponsors() do
+    Enum.map(Path.wildcard("priv/static/images/sponsors/*"),
+             fn(path) -> Repo.insert(
+               %Sponsor{logo: "/images/sponsors/" <> Path.basename(path),
+                 orientation: "landscape", background: "#FFFFFF"})
+             end)
   end
 
   def new(conn, _params) do
@@ -18,6 +42,7 @@ defmodule Namuraid.SponsorController do
 
     case Repo.insert(changeset) do
       {:ok, _sponsor} ->
+        Namuraid.SponsorsChannel.update_sponsors(Repo.all(Sponsor))
         conn
         |> put_flash(:info, "Sponsor created successfully.")
         |> redirect(to: sponsor_path(conn, :index))
@@ -43,6 +68,7 @@ defmodule Namuraid.SponsorController do
 
     case Repo.update(changeset) do
       {:ok, sponsor} ->
+        Namuraid.SponsorsChannel.update_sponsors(Repo.all(Sponsor))
         conn
         |> put_flash(:info, "Sponsor updated successfully.")
         |> redirect(to: sponsor_path(conn, :show, sponsor))
@@ -57,6 +83,7 @@ defmodule Namuraid.SponsorController do
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
     Repo.delete!(sponsor)
+    Namuraid.SponsorsChannel.update_sponsors(Repo.all(Sponsor))
 
     conn
     |> put_flash(:info, "Sponsor deleted successfully.")

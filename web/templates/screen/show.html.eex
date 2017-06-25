@@ -39,5 +39,5 @@
 
 </ul>
 
-<%= link "Edit", to: screen_path(@conn, :edit, @screen) %>
-<%= link "Back", to: screen_path(@conn, :index) %>
+<%= link "Edit", to: screen_path(@conn, :edit, @screen), class: "btn btn-default" %>
+<%= link "Back", to: screen_path(@conn, :index), class: "btn btn-default" %>

@@ -45,7 +45,7 @@ defmodule Namuraid.ScreenController do
     changeset = Screen.changeset(screen, screen_params)
     case Repo.update(changeset) do
       {:ok, screen} ->
-        Namuraid.ScreenChannel.update_dimension(screen)
+        Namuraid.ScreenChannel.update_screen_properties(screen)
         if get_change(changeset, :name) do
           Namuraid.ScreenChannel.update_screen_name_list(Repo.all_screens())
         end

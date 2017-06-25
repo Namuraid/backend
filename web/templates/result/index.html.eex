@@ -1,0 +1,61 @@
+<h2>Result view properties</h2>
+
+<%= form_for @conn, start_path(@conn, :create), [as: :start], fn f -> %>
+  <div class="form-group">
+    <%= label f, :interval, class: "control-label" %>
+    <%= number_input f, :interval, value: @interval, class: "form-control" %>
+    <%= error_tag f, :interval %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :count, class: "control-label" %>
+    <%= number_input f, :count, value: @count, class: "form-control" %>
+    <%= error_tag f, :count %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :from, class: "control-label" %>
+    <%= number_input f, :from, value: @from, class: "form-control" %>
+    <%= error_tag f, :from %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :running, class: "control-label" %>
+    <%= checkbox f, :running, value: @running, class: "form-control" %>
+    <%= error_tag f, :running %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= form_for @conn, start_path(@conn, :create), [as: :upload], fn f -> %>
+  <div class="form-group">
+    <%= label f, :interval, class: "control-label" %>
+    <%= number_input f, :interval, value: @interval, class: "form-control" %>
+    <%= error_tag f, :interval %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :count, class: "control-label" %>
+    <%= number_input f, :count, value: @count, class: "form-control" %>
+    <%= error_tag f, :count %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :from, class: "control-label" %>
+    <%= number_input f, :from, value: @from, class: "form-control" %>
+    <%= error_tag f, :from %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :running, class: "control-label" %>
+    <%= checkbox f, :running, value: @running, class: "form-control" %>
+    <%= error_tag f, :running %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

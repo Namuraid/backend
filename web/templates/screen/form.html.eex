@@ -13,7 +13,9 @@
 
   <div class="form-group">
     <%= label f, :activeScreen, class: "control-label" %>
-    <%= text_input f, :activeScreen, class: "form-control" %>
+    <%= select f, :activeScreen, ["sponsors", "site-walk", "start",
+                                  "videofeed", "picture-slideshow",
+                                  "result", "info-start"], class: "form-control" %>
     <%= error_tag f, :activeScreen %>
   </div>
 

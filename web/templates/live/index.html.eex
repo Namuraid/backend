@@ -1,0 +1,19 @@
+<h2>Facebook Live connection properties</h2>
+
+<%= form_for @conn, live_path(@conn, :create), [as: :live], fn f -> %>
+  <div class="form-group">
+    <%= label f, :token, class: "control-label" %>
+    <%= text_input f, :token, value: @token, class: "form-control" %>
+    <%= error_tag f, :token %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :pageid, class: "control-label" %>
+    <%= text_input f, :pageid, value: @pageid, class: "form-control" %>
+    <%= error_tag f, :pageid %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

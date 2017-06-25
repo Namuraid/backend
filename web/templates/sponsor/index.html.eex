@@ -4,7 +4,9 @@
   <thead>
     <tr>
       <th>Logo</th>
-
+      <th>Orientation</th>
+      <th>Background</th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -12,6 +14,9 @@
 <%= for sponsor <- @sponsor do %>
     <tr>
       <td><%= sponsor.logo %></td>
+      <td><%= sponsor.orientation %></td>
+      <td><%= sponsor.background %></td>
+      <td><img width="50px" height="auto" src="<%= static_path(@conn, sponsor.logo) %>"/></td>
 
       <td class="text-right">
         <%= link "Show", to: sponsor_path(@conn, :show, sponsor), class: "btn btn-default btn-xs" %>
@@ -23,4 +28,6 @@
   </tbody>
 </table>
 
-<%= link "New sponsor", to: sponsor_path(@conn, :new) %>
+<%= link "New sponsor", to: sponsor_path(@conn, :new), class: "btn btn-default" %>
+<%= link "Fetch initial list", to: sponsor_path(@conn, :index, seed: true), data: [confirm: "Are you sure?"], class: "btn btn-default" %>
+<%= link "Clear", to: sponsor_path(@conn, :index, clear: true), data: [confirm: "Are you sure?"], class: "btn btn-default" %>

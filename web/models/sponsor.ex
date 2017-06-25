@@ -3,6 +3,8 @@ defmodule Namuraid.Sponsor do
 
   schema "sponsor" do
     field :logo, :string
+    field :orientation, :string
+    field :background, :string
 
     timestamps()
   end
@@ -12,7 +14,7 @@ defmodule Namuraid.Sponsor do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:logo])
-    |> validate_required([:logo])
+    |> cast(params, [:logo, :orientation, :background])
+    |> validate_required([:logo, :orientation, :background])
   end
 end

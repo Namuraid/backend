@@ -12,6 +12,19 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :orientation, class: "control-label" %>
+    <%= select f, :orientation, ["portrait", "landscape"],
+                  class: "form-control" %>
+    <%= error_tag f, :orientation %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :background, class: "control-label" %>
+    <%= text_input f, :background, class: "form-control" %>
+    <%= error_tag f, :background %>
+  </div>
+
+  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

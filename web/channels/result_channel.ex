@@ -8,6 +8,6 @@ defmodule Namuraid.ResultChannel do
   end
 
   def update(csv) do
-    Namuraid.Endpoint.broadcast("result", "result", csv)
+    Namuraid.Endpoint.broadcast("result", "result", %{"result" => csv})
   end
 end

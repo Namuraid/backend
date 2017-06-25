@@ -33,7 +33,7 @@ defmodule Namuraid.ResultsController do
       end
     )
     Namuraid.State.set(:resultcsv, csv)
-    # Namuraid.ResultChannel.update(csv)
+    Namuraid.ResultChannel.update(csv)
     conn
     |> put_flash(:info, "Updated result properties!")
     |> redirect(to: results_path(conn, :index))

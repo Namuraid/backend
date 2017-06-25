@@ -24,8 +24,8 @@ defmodule Namuraid.Router do
     get "/start", StartController, :index
     post "/start", StartController, :create
 
-    get "/result", ResultController, :index
-    post "/result", ResultController, :create
+    get "/results", ResultsController, :index
+    post "/results", ResultsController, :create
 
     resources "/screens", ScreenController
     resources "/sitewalk", SiteWalkController

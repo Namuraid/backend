@@ -3,8 +3,11 @@ defmodule Namuraid.ResultChannel do
 
   def join("result", _params, socket) do
     {:ok, %{
-      "token" => Namuraid.State.get(:fbtoken),
-      "pageId" => Namuraid.State.get(:fbpageid)
+      "result" => Namuraid.State.get(:resultcsv, [])
     }, socket}
+  end
+
+  def update(csv) do
+    Namuraid.Endpoint.broadcast("result", "result", csv)
   end
 end

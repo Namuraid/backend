@@ -1,4 +1,4 @@
-defmodule Namuraid.ResultController do
+defmodule Namuraid.ResultsController do
   use Namuraid.Web, :controller
   require Logger
 
@@ -6,23 +6,41 @@ defmodule Namuraid.ResultController do
     _render(conn)
   end
 
-  def create(conn, %{"start" => %{"interval" => interval,
-        "count" => count,  "from" => from, "running" => running} = _start
+  def create(conn, %{"result" => %{"file" => uploadedFile} = _result
       } = _params) do
-    Namuraid.State.set(:startinterval, interval)
-    Namuraid.State.set(:startcount, count)
-    Namuraid.State.set(:startfrom, from)
-    Namuraid.State.set(:startrunning, running)
+    csv = uploadedFile.path
+    |> File.stream!()
+    |> CSV.decode(separator: ?;)
+    |> Enum.filter(fn(row) ->
+      case row do
+        {:ok, r} -> true
+        {:error, msg} -> false
+        end
+      end)
+    |> Enum.slice(5..100000) # TODO: retreive offset from form to keep only good arrived result
+    |> Enum.map(
+      fn(row) ->
+        Logger.info("row is #{inspect(row)}")
+        case row do
+          {:ok, r} -> %{
+            rank: Enum.at(r, 2),
+            rankCat: Enum.at(r, 10),
+            name: Enum.at(r, 5),
+            cat: Enum.at(r, 11),
+            time: Enum.at(r, 8)
+            }
+        end
+      end
+    )
+    Namuraid.State.set(:resultcsv, csv)
+    # Namuraid.ResultChannel.update(csv)
     conn
-    |> put_flash(:info, "Updated starting properties!")
-    |> redirect(to: start_path(conn, :index))
+    |> put_flash(:info, "Updated result properties!")
+    |> redirect(to: results_path(conn, :index))
   end
 
   defp _render(conn) do
     render(conn, "index.html",
-           interval: Namuraid.State.get(:startinterval, "300"),
-           count: Namuraid.State.get(:startcount, 30),
-           from: Namuraid.State.get(:startfrom, 1),
-           running: Namuraid.State. get(:startrunning, false))
+           csv: Namuraid.State.get(:resultcsv, []))
   end
 end

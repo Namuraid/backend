@@ -1,0 +1,36 @@
+<h2>Result view properties</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Rank by category</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for row <- @csv do %>
+    <tr>
+      <td><%= row.rank %></td>
+      <td><%= row.rankCat %></td>
+      <td><%= row.name %></td>
+      <td><%= row.cat %></td>
+      <td><%= row.time %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+
+<%= form_for @conn, results_path(@conn, :create), [as: :result, multipart: true], fn f -> %>
+   <div class="form-group">
+    <%= label f, :file, class: "control-label" %>
+    <%= file_input f, :file %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

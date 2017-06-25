@@ -6,9 +6,10 @@ defmodule Namuraid.LiveController do
   end
 
   def create(conn, %{"live" => %{
-                "token" => token, "pageid" => pageid} = _live} = _params) do
+                "token" => token, "pageid" => pageid, "style" => style} = _live} = _params) do
     Namuraid.State.set(:fbtoken, token)
     Namuraid.State.set(:fbpageid, pageid)
+    Namuraid.State.set(:fbstyle, style)
     conn
     |> put_flash(:info, "Updated Facebook live properties!")
     |> redirect(to: live_path(conn, :index))
@@ -17,6 +18,7 @@ defmodule Namuraid.LiveController do
   defp _render(conn) do
     render(conn, "index.html",
            token: Namuraid.State.get(:fbtoken, ""),
-           pageid: Namuraid.State.get(:fbpageid, ""))
+           pageid: Namuraid.State.get(:fbpageid, ""),
+           style: Namuraid.State.get(:fbstyle, ""))
   end
 end
